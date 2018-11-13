@@ -1,0 +1,93 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/raids/raids.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/raids/raids.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "raids",
+				"docs": "This resource returns information about raids that are available in-game.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "raid",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of raid ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The id of the raid."
+					},
+					{
+						"name": "unlock_items",
+						"type": "Array<wing>",
+						"isOptional": false,
+						"docs": "An array of raid wings.",
+						"subTypes": [
+							{
+								"name": "wing",
+								"apiDataVariables": [
+									{
+										"name": "id",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The given name for the dungeon path."
+									},
+									{
+										"name": "events",
+										"type": "Array<event>",
+										"isOptional": false,
+										"docs": "An array of raid wing events.",
+										"subTypes": [
+											{
+												"name": "event",
+												"apiDataVariables": [
+													{
+														"name": "id",
+														"type": "string",
+														"isOptional": false,
+														"docs": "The given name for the event."
+													},
+													{
+														"name": "type",
+														"type": "string",
+														"isOptional": false,
+														"docs": "The type of events. Can be either Checkpoint, or Boss"
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		}
+	]
+}

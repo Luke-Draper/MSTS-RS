@@ -1,0 +1,55 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/races/races.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/races/races.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "races",
+				"docs": "This resource returns information about races that are available in-game.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "race",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of race ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The id of the race."
+					},
+					{
+						"name": "skills",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "An array of skill ids resolvable against v2/skills."
+					}
+				]
+			}
+		}
+	]
+}

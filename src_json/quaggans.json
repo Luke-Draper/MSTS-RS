@@ -1,0 +1,55 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/quaggans/quaggans.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/quaggans/quaggans.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "quaggans",
+				"docs": "This resource returns information about quaggans that are available in-game.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "quaggan",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of quaggan ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The id of the quaggan."
+					},
+					{
+						"name": "url",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The url for the quaggan image."
+					}
+				]
+			}
+		}
+	]
+}

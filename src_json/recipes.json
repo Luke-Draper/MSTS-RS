@@ -1,0 +1,153 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/recipes/recipes.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/recipes/recipes.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "recipes",
+				"docs": "This resource returns information about recipes that are available in-game.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": false,
+				"elementName": "recipe",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of recipe ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The id of the recipe."
+					},
+					{
+						"name": "type",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The recipe type. Possible values: Weapon recipes: Axe, Dagger, Focus, Greatsword, Hammer, Harpoon, LongBow, Mace, Pistol, Rifle, Scepter, Shield, ShortBow, Speargun, Staff, Sword, Torch, Trident, Warhorn, Armor recipes: Boots, Coat, Gloves, Helm, Leggings, Shoulders, Trinket recipes: Amulet, Earring, Ring, Food recipes: Dessert, Feast, IngredientCooking, Meal, Seasoning, Snack, Soup, Food, Crafting component recipes: Component, Inscription, Insignia, LegendaryComponent, Refinement recipes: Refinement, RefinementEctoplasm, RefinementObsidian, Guild recipes: GuildConsumable, GuildDecoration, GuildConsumableWvw, Other recipes: Backpack, Bag, Bulk, Consumable, Dye, Food, Potion, UpgradeComponent"
+					},
+					{
+						"name": "output_item_id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The item id of the produced item resolvable against v2/items."
+					},
+					{
+						"name": "output_item_count",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The amount of items produced."
+					},
+					{
+						"name": "time_to_craft_ms",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The time in milliseconds it takes to craft the item."
+					},
+					{
+						"name": "disciplines",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "The crafting disciplines that can use the recipe. Possible values: Artificer, Armorsmith, Chef, Huntsman, Jeweler, Leatherworker, Tailor, Weaponsmith, Scribe"
+					},
+					{
+						"name": "min_rating",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The required rating to craft the recipe."
+					},
+					{
+						"name": "flags",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "Flags applying to the recipe. Possible values: AutoLearned – Indicates that a recipe automatically unlocks upon reaching the required discipline rating., LearnedFromItem – Indicates that a recipe is unlocked by consuming a recipe sheet."
+					},
+					{
+						"name": "ingredients",
+						"type": "Array<ingredient>",
+						"isOptional": false,
+						"docs": "List of recipe ingredients.",
+						"subTypes": [
+							{
+								"name": "ingredient",
+								"apiDataVariables": [
+									{
+										"name": "item_id",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The ingredient's item id resolvable against v2/items."
+									},
+									{
+										"name": "count",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The quantity of this ingredient."
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "guild_ingredients",
+						"type": "Array<guild_ingredient>",
+						"isOptional": false,
+						"docs": "",
+						"subTypes": [
+							{
+								"name": "guild_ingredients",
+								"apiDataVariables": [
+									{
+										"name": "upgrade_id",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The id of the used guild upgrade resolvable against v2/guild/upgrades."
+									},
+									{
+										"name": "count",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The quantity of this guild ingredient."
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "output_upgrade_id",
+						"type": "number",
+						"isOptional": true,
+						"docs": "The id of the produced guild upgrade resolvable against v2/guild/upgrades."
+					},
+					{
+						"name": "chat_link",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The chat code for the recipe."
+					}
+				]
+			}
+		}
+	]
+}

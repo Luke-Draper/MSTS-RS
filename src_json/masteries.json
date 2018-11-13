@@ -1,0 +1,128 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/masteries/masteries.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/masteries/masteries.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "masteries",
+				"docs": "This resource returns information about masteries that are available in-game.",
+				"isAuthenticated": false,
+				"isLocalized": true,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "mastery",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of mastery ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The id of the mastery."
+					},
+					{
+						"name": "name",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The name of the mastery as it appears in-game."
+					},
+					{
+						"name": "requirement",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The written out requirements to unlock the mastery track."
+					},
+					{
+						"name": "order",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The order in which the mastery track appears in a list."
+					},
+					{
+						"name": "background",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The background url for the mastery track."
+					},
+					{
+						"name": "region",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The in-game region in which the mastery track belongs."
+					},
+					{
+						"name": "levels",
+						"type": "Array<masteryLevel>",
+						"isOptional": false,
+						"docs": "An array containing the information of each mastery level.",
+						"subTypes": [
+							{
+								"name": "masteryLevel",
+								"apiDataVariables": [
+									{
+										"name": "name",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The name of the mastery."
+									},
+									{
+										"name": "description",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The in game description for the given mastery."
+									},
+									{
+										"name": "instruction",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The in game instructions for the given mastery."
+									},
+									{
+										"name": "icon",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The icon url for the mastery."
+									},
+									{
+										"name": "point_cost",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The amount of mastery points required to unlock the mastery."
+									},
+									{
+										"name": "exp_cost",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The total amount of experience needed to train the given mastery level. This total is non-cumulative between levels."
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		}
+	]
+}

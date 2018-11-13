@@ -1,0 +1,74 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/root.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/root.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "root",
+				"docs": "This is the root node of the GW2 API V2",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": false,
+				"isParent": true,
+				"childNodes": [
+					"account",
+					"achievements",
+					"backstory",
+					"build",
+					"cats",
+					"characters",
+					"colors",
+					"commerce",
+					"continents",
+					"currencies",
+					"dungeons",
+					"emblem",
+					"files",
+					"finishers",
+					"gliders",
+					"guild",
+					"items",
+					"itemstats",
+					"legends",
+					"mailcarriers",
+					"maps",
+					"masteries",
+					"materials",
+					"minis",
+					"nodes",
+					"outfits",
+					"pets",
+					"professions",
+					"pvp",
+					"quaggans",
+					"races",
+					"raids",
+					"recipes",
+					"skills",
+					"skins",
+					"specializations",
+					"stories",
+					"titles",
+					"tokeninfo",
+					"traits",
+					"worlds",
+					"wvw"
+				],
+				"isList": false,
+				"isElement": false,
+				"hasData": false
+			}
+		}
+	]
+}

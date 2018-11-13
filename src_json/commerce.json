@@ -1,0 +1,374 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/commerce/commerce.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/commerce/commerce.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "commerce",
+				"docs": "This resource is a dummy granting access to its children.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": true,
+				"childNodes": [
+					"delivery",
+					"exchange",
+					"listings",
+					"prices",
+					"transactions"
+				],
+				"isList": false,
+				"isElement": false,
+				"hasData": false
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/commerce/delivery/delivery.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/commerce/delivery/delivery.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "delivery",
+				"docs": "This resource provides access to the current items and coins available for pickup on this account",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "commerce",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "coins",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The amount of coins ready for pickup."
+					},
+					{
+						"name": "items",
+						"type": "Array<item>",
+						"isOptional": false,
+						"docs": "The items ready for pickup",
+						"subTypes": [
+							{
+								"name": "item",
+								"apiDataVariables": [
+									{
+										"name": "id",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The item id, resolvable against v2/items."
+									},
+									{
+										"name": "count",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The amount of this item ready for pickup."
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/commerce/exchange/exchange.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/commerce/exchange/exchange.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "exchange",
+				"docs": "This resource is a dummy granting access to its children.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "commerce",
+				"isParent": true,
+				"childNodes": ["coins", "gems"],
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "sub",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "The response is an array containing 'coins', and 'gems', signalizing the two subresources."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/commerce/exchange/coins/coins.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/commerce/exchange/coins/coins.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "coins",
+				"docs": "This resource returns the current coins to gems exchange rate. -=- TODO -=- Make parameter input useful for this node.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "exchange",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "coins_per_gem",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The number of coins you required for a single gem."
+					},
+					{
+						"name": "quantity",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The number of gems you get for the specified quantity of coins."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/commerce/exchange/gems/gems.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/commerce/exchange/gems/gems.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "gems",
+				"docs": "This resource returns the current gems to coins exchange rate. -=- TODO -=- Make parameter input useful for this node.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "exchange",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "coins_per_gem",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The number of coins you get for a single gem."
+					},
+					{
+						"name": "quantity",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The number of coins you get for the specified quantity of gems."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/commerce/listings/listings.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/commerce/listings/listings.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "listings",
+				"docs": "This resource returns current buy and sell listings from the trading post.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "commerce",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": false,
+				"elementName": "listing",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "A full list of listing ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The item id."
+					},
+					{
+						"name": "buys",
+						"type": "Array<listingData>",
+						"isOptional": false,
+						"docs": "A list of all buy listings, ascending from lowest buy order."
+					},
+					{
+						"name": "sells",
+						"type": "Array<listingData>",
+						"isOptional": false,
+						"docs": "A list of all sell listings, ascending from lowest sell offer.",
+						"subTypes": [
+							{
+								"name": "listingData",
+								"apiDataVariables": [
+									{
+										"name": "listings",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The number of individual listings this object refers to (e.g. two players selling at the same price will end up in the same listing)"
+									},
+									{
+										"name": "unit_price",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The sell offer or buy order price in coins."
+									},
+									{
+										"name": "quantity",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The amount of items being sold/bought in this listing."
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/commerce/prices/prices.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/commerce/prices/prices.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "prices",
+				"docs": "This resource returns current aggregated buy and sell listing information from the trading post.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "commerce",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": false,
+				"elementName": "price",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "A full list of listing ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The item id."
+					},
+					{
+						"name": "whitelisted",
+						"type": "boolean",
+						"isOptional": false,
+						"docs": "Indicates whether or not a free to play account can purchase or sell this item on the trading post."
+					},
+					{
+						"name": "buys",
+						"type": "priceData",
+						"isOptional": false,
+						"docs": "Buy information."
+					},
+					{
+						"name": "sells",
+						"type": "priceData",
+						"isOptional": false,
+						"docs": "Sell information.",
+						"subTypes": [
+							{
+								"name": "priceData",
+								"apiDataVariables": [
+									{
+										"name": "unit_price",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The highest buy order or lowest sell offer price in coins."
+									},
+									{
+										"name": "quantity",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The amount of items being sold/bought."
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		}
+	]
+}

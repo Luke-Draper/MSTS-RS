@@ -1,0 +1,192 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/backstory/backstory.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/backstory/backstory.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "backstory",
+				"docs": "This resource is a dummy granting access to its children.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": true,
+				"childNodes": ["answers", "questions"],
+				"isList": false,
+				"isElement": false,
+				"hasData": false
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/backstory/answers/answers.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/backstory/answers/answers.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "answers",
+				"docs": "This resource returns information about the Biography answers that are in the game.",
+				"isAuthenticated": false,
+				"isLocalized": true,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "backstory",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "answer",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "A full list of answer ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The answer id."
+					},
+					{
+						"name": "title",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The answer title. Defaults to ''."
+					},
+					{
+						"name": "description",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The description of the answer; as displayed in-game when presented as an answer choice to a question during the Biography portion of character creation. Defaults to ''."
+					},
+					{
+						"name": "journal",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The Story Journal entry for the answer; as displayed in-game. Defaults to ''."
+					},
+					{
+						"name": "question",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The id of the Biography question that this answers; resolves against v2/backstory/questions. Defaults to 0."
+					},
+					{
+						"name": "professions",
+						"type": "Array<string>",
+						"isOptional": true,
+						"docs": "When present, an array of professions that this answer is available as a choice for. Defaults to []."
+					},
+					{
+						"name": "races",
+						"type": "Array<string>",
+						"isOptional": true,
+						"docs": "When present, an array of races that this answer is available as a choice for. Defaults to []."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/backstory/questions/questions.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/backstory/questions/questions.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "questions",
+				"docs": "This resource returns information about the Biography questions that are in the game.",
+				"isAuthenticated": false,
+				"isLocalized": true,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "backstory",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "question",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "A full list of question ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The question id."
+					},
+					{
+						"name": "title",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The question title. Defaults to ''."
+					},
+					{
+						"name": "description",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The description of the question; as displayed in-game when presented as an question choice to a question during the Biography portion of character creation. Defaults to ''."
+					},
+					{
+						"name": "answers",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "The list of answers for this question; resolvable against v2/backstory/answers."
+					},
+					{
+						"name": "order",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The order in which this question is displayed in-game while answering your characters' Biography questions during character creation."
+					},
+					{
+						"name": "professions",
+						"type": "Array<string>",
+						"isOptional": true,
+						"docs": "When present, an array of professions that this question is available as a choice for. Defaults to []."
+					},
+					{
+						"name": "races",
+						"type": "Array<string>",
+						"isOptional": true,
+						"docs": "When present, an array of races that this question is available as a choice for. Defaults to []."
+					}
+				]
+			}
+		}
+	]
+}

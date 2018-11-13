@@ -1,0 +1,584 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/achievements/achievements.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/achievements/achievements.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "achievements",
+				"docs": "This resource returns all achievements in the game, including localized names and icons.",
+				"isAuthenticated": false,
+				"isLocalized": true,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": true,
+				"childNodes": ["categories", "daily", "groups"],
+				"isList": true,
+				"getAllAvailable": false,
+				"elementName": "achievement",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "A full list of achievement ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The achievement id."
+					},
+					{
+						"name": "icon",
+						"type": "string",
+						"isOptional": true,
+						"docs": "The achievement icon url."
+					},
+					{
+						"name": "name",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The achievement name."
+					},
+					{
+						"name": "description",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The achievement description."
+					},
+					{
+						"name": "requirement",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The achievement requirement as listed in-game."
+					},
+					{
+						"name": "locked_text",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The achievement description prior to unlocking it."
+					},
+					{
+						"name": "type",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The achievement type. Possible values: Default - A default achievement, ItemSet - Achievement is linked to Collections"
+					},
+					{
+						"name": "flags",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "Achievement categories. Possible values: Pvp - can only get progress in PvP or WvW, CategoryDisplay - is a meta achievement, MoveToTop - affects in-game UI collation, IgnoreNearlyComplete - doesn't appear in the 'nearly complete' UI, Repeatable - can be repeated multiple times, Hidden - hidden achievement; must fulfil unlock requirements before making progress or showing in the hero panel, RequiresUnlock - must fulfil unlock requirements before making progress but will show in the hero panel before unlocking, RepairOnLogin - unknown, Daily - Flags an achievement as resetting daily., Weekly - Flags an achievement as resetting weekly., Monthly - Flags an achievement as resetting monthly., Permanent - Flags an achievement as progress never reseting."
+					},
+					{
+						"name": "tiers",
+						"type": "Array<tier>",
+						"isOptional": false,
+						"docs": "Describes the achievement's tiers.",
+						"subTypes": [
+							{
+								"name": "tier",
+								"apiDataVariables": [
+									{
+										"name": "count",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The number of 'things' (achievement-specific) that must be completed to achieve this tier."
+									},
+									{
+										"name": "points",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The amount of AP awarded for completing this tier."
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "prerequisites",
+						"type": "Array<number>",
+						"isOptional": true,
+						"docs": "Contains an array of achievement ids required to progress the given achievement."
+					},
+					{
+						"name": "rewards",
+						"type": "Array<reward>",
+						"isOptional": false,
+						"docs": "Describes the achievement's rewards.",
+						"subTypes": [
+							{
+								"name": "reward",
+								"apiDataVariables": [
+									{
+										"name": "type",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The type of reward. Additional fields appear for different values of type."
+									}
+								],
+								"subTypes": [
+									{
+										"name": "coinReward",
+										"apiDataVariables": [
+											{
+												"name": "count",
+												"type": "number",
+												"isOptional": false,
+												"docs": "The number of Coins to be rewarded."
+											}
+										]
+									},
+									{
+										"name": "itemReward",
+										"apiDataVariables": [
+											{
+												"name": "id",
+												"type": "number",
+												"isOptional": false,
+												"docs": "The item ID to be rewarded."
+											},
+											{
+												"name": "count",
+												"type": "number",
+												"isOptional": false,
+												"docs": "The number of id to be rewarded."
+											}
+										]
+									},
+									{
+										"name": "masteryReward",
+										"apiDataVariables": [
+											{
+												"name": "id",
+												"type": "number",
+												"isOptional": false,
+												"docs": "The mastery point ID to be rewarded."
+											},
+											{
+												"name": "region",
+												"type": "string",
+												"isOptional": false,
+												"docs": "The region the Mastery Point applies to. Either Tyria, Maguuma or Desert."
+											}
+										]
+									},
+									{
+										"name": "titleReward",
+										"apiDataVariables": [
+											{
+												"name": "id",
+												"type": "number",
+												"isOptional": false,
+												"docs": "The title id."
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "bits",
+						"type": "Array<bit>",
+						"isOptional": true,
+						"docs": "Contains a number of objects, each corresponding to a bitmask value that can give further information on the progress towards the achievement.",
+						"subTypes": [
+							{
+								"name": "bit",
+								"apiDataVariables": [
+									{
+										"name": "type",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The type of bit. Can be Text, Item, Minipet, or Skin."
+									},
+									{
+										"name": "id",
+										"type": "number",
+										"isOptional": true,
+										"docs": "The ID of the item, mini, or skin, if applicable."
+									},
+									{
+										"name": "text",
+										"type": "string",
+										"isOptional": true,
+										"docs": "The text for the bit, if type is Text."
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "point_cap",
+						"type": "number",
+						"isOptional": true,
+						"docs": "The maximum number of AP that can be rewarded by an achievement flagged as Repeatable."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/achievements/categories/categories.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/achievements/categories/categories.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "categories",
+				"docs": "This resource returns all the categories for achievements.",
+				"isAuthenticated": false,
+				"isLocalized": true,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "achievements",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "category",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "A full list of category ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The category id."
+					},
+					{
+						"name": "name",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The category name."
+					},
+					{
+						"name": "description",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The category description."
+					},
+					{
+						"name": "order",
+						"type": "number",
+						"isOptional": false,
+						"docs": "A number describing where to sort this category among other the other categories in its group. Lowest numbers go first, highest numbers go last."
+					},
+					{
+						"name": "icon",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The category icon url."
+					},
+					{
+						"name": "achievements",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "An array containing a number of achievement IDs that this category contains accessible through /v2/achievements."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/achievements/daily/daily.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/achievements/daily/daily.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "daily",
+				"docs": "This resource returns the current daily achievements.",
+				"isAuthenticated": false,
+				"isLocalized": true,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "achievements",
+				"isParent": true,
+				"childNodes": ["tomorrow"],
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "pve",
+						"type": "Array<achievement>",
+						"isOptional": false,
+						"docs": "The current daily PVE achievements."
+					},
+					{
+						"name": "pve",
+						"type": "Array<achievement>",
+						"isOptional": false,
+						"docs": "The current daily PVE achievements."
+					},
+					{
+						"name": "pve",
+						"type": "Array<achievement>",
+						"isOptional": false,
+						"docs": "The current daily PVE achievements."
+					},
+					{
+						"name": "pve",
+						"type": "Array<achievement>",
+						"isOptional": false,
+						"docs": "The current daily PVE achievements."
+					},
+					{
+						"name": "pve",
+						"type": "Array<achievement>",
+						"isOptional": false,
+						"docs": "The current daily PVE achievements.",
+						"subTypes": [
+							{
+								"name": "achievement",
+								"apiDataVariables": [
+									{
+										"name": "id",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The achievement id."
+									},
+									{
+										"name": "level",
+										"type": "minMax",
+										"isOptional": false,
+										"docs": "Describes the level requirement for the daily to appear.",
+										"subTypes": [
+											{
+												"name": "achievement",
+												"apiDataVariables": [
+													{
+														"name": "min",
+														"type": "number",
+														"isOptional": false,
+														"docs": "The minimum level. Any character below this level will not see this daily achievement."
+													},
+													{
+														"name": "max",
+														"type": "number",
+														"isOptional": false,
+														"docs": "The maximum level. Any character above this level will not see this daily achievement."
+													}
+												]
+											}
+										]
+									},
+									{
+										"name": "required_access",
+										"type": "Array<string>",
+										"isOptional": false,
+										"docs": "Contains which Guild Wars 2 campaigns are required in order to see this daily achievement. Possible values: GuildWars2 and/or HeartOfThorns."
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/achievements/daily/tomorrow/tomorrow.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/achievements/daily/tomorrow/tomorrow.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "tomorrow",
+				"docs": "This resource returns tomorrow's daily achievements.",
+				"isAuthenticated": false,
+				"isLocalized": true,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "daily",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "pve",
+						"type": "Array<achievement>",
+						"isOptional": false,
+						"docs": "The next daily PVE achievements."
+					},
+					{
+						"name": "pve",
+						"type": "Array<achievement>",
+						"isOptional": false,
+						"docs": "The next daily PVE achievements."
+					},
+					{
+						"name": "pve",
+						"type": "Array<achievement>",
+						"isOptional": false,
+						"docs": "The next daily PVE achievements."
+					},
+					{
+						"name": "pve",
+						"type": "Array<achievement>",
+						"isOptional": false,
+						"docs": "The next daily PVE achievements."
+					},
+					{
+						"name": "pve",
+						"type": "Array<achievement>",
+						"isOptional": false,
+						"docs": "The next daily PVE achievements.",
+						"subTypes": [
+							{
+								"name": "achievement",
+								"apiDataVariables": [
+									{
+										"name": "id",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The achievement id."
+									},
+									{
+										"name": "level",
+										"type": "minMax",
+										"isOptional": false,
+										"docs": "Describes the level requirement for the daily to appear.",
+										"subTypes": [
+											{
+												"name": "achievement",
+												"apiDataVariables": [
+													{
+														"name": "min",
+														"type": "number",
+														"isOptional": false,
+														"docs": "The minimum level. Any character below this level will not see this daily achievement."
+													},
+													{
+														"name": "max",
+														"type": "number",
+														"isOptional": false,
+														"docs": "The maximum level. Any character above this level will not see this daily achievement."
+													}
+												]
+											}
+										]
+									},
+									{
+										"name": "required_access",
+										"type": "Array<string>",
+										"isOptional": false,
+										"docs": "Contains which Guild Wars 2 campaigns are required in order to see this daily achievement. Possible values: GuildWars2 and/or HeartOfThorns."
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/achievements/groups/groups.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/achievements/groups/groups.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "groups",
+				"docs": "This resource returns all the top-level groups for achievements.",
+				"isAuthenticated": false,
+				"isLocalized": true,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "achievements",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "group",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "A full list of group ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The group GUID."
+					},
+					{
+						"name": "name",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The group name."
+					},
+					{
+						"name": "description",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The group description."
+					},
+					{
+						"name": "order",
+						"type": "number",
+						"isOptional": false,
+						"docs": "A number describing where to sort this group among other the other groups. Lowest numbers go first, highest numbers go last."
+					},
+					{
+						"name": "categories",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "An array containing a number of category IDs that this category contains accessible through /v2/achievements/categories."
+					}
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,1232 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/account.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/account.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "account",
+				"docs": "This resource returns information about player accounts.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": true,
+				"childNodes": [
+					"achievements",
+					"bank",
+					"dungeons",
+					"dyes",
+					"finishers",
+					"gliders",
+					"home",
+					"inventory",
+					"mailcarriers",
+					"masteries",
+					"mastery",
+					"materials",
+					"minis",
+					"outfits",
+					"pvp",
+					"raids",
+					"recipes",
+					"skins",
+					"titles",
+					"wallet"
+				],
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "id",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The unique persistent account GUID."
+					},
+					{
+						"name": "age",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The age of the account in seconds."
+					},
+					{
+						"name": "name",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The unique account name with numerical suffix. It is possible that the name change. Do not rely on the name, use id instead."
+					},
+					{
+						"name": "world",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The id of the home world the account is assigned to. Can be resolved against /v2/worlds."
+					},
+					{
+						"name": "guilds",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "A list of guild ids assigned to the given account."
+					},
+					{
+						"name": "guild_leader",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "A list of guild ids the account is leader of. overlaps with guilds"
+					},
+					{
+						"name": "created",
+						"type": "string",
+						"isOptional": false,
+						"docs": "An ISO-8601 standard timestamp of when the account was created."
+					},
+					{
+						"name": "access",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "A list of what content this account has access to. Possible values: None-should probably never happen, PlayForFree-has not yet purchased the game, GuildWars2-has purchased the base game, HeartOfThorns-has purchased Heart of Thorns, PathOfFire-has purchased Path of Fire",
+						"enum": [
+							"None",
+							"PlayForFree",
+							"GuildWars2",
+							"HeartOfThorns",
+							"PathOfFire"
+						]
+					},
+					{
+						"name": "commander",
+						"type": "BOOLEAN",
+						"isOptional": false,
+						"docs": "True if the player has bought a commander tag."
+					},
+					{
+						"name": "fractal_level",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The account's personal fractal reward level. Requires the additional progression scope."
+					},
+					{
+						"name": "daily_ap",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The daily AP the account has. Requires the additional progression scope."
+					},
+					{
+						"name": "monthly_ap",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The monthly AP the account has. Requires the additional progression scope."
+					},
+					{
+						"name": "wvw_rank",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The account's personal wvw rank. Requires the additional progression scope."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/achievements/achievements.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/achievements/achievements.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "achievements",
+				"docs": "This resource returns an account's progress towards all their achievements.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "achievements",
+						"type": "Array<achievement>",
+						"isOptional": false,
+						"docs": "The full list of current achievement objects",
+						"subTypes": [
+							{
+								"name": "achievement",
+								"apiDataVariables": [
+									{
+										"name": "id",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The achievement id."
+									},
+									{
+										"name": "bits",
+										"type": "Array<number>",
+										"isOptional": true,
+										"docs": "This attribute contains an array of numbers, giving more specific information on the progress for the achievement. The meaning of each value varies with each achievement."
+									},
+									{
+										"name": "current",
+										"type": "number",
+										"isOptional": true,
+										"docs": "The player's current progress towards the achievement."
+									},
+									{
+										"name": "max",
+										"type": "number",
+										"isOptional": true,
+										"docs": "The amount needed to complete the achievement."
+									},
+									{
+										"name": "done",
+										"type": "boolean",
+										"isOptional": false,
+										"docs": "Whether or not the achievement is done."
+									},
+									{
+										"name": "repeated",
+										"type": "number",
+										"isOptional": true,
+										"docs": "The number of times the achievement has been completed if the achievement is repeatable."
+									},
+									{
+										"name": "unlocked",
+										"type": "boolean",
+										"isOptional": true,
+										"docs": "Whether or not the achievement is unlocked. Note that if this property does not exist, the achievement is unlocked as well."
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/bank/bank.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/bank/bank.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "bank",
+				"docs": "This resource returns the items stored in a player's vault (not including material storage).",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "items",
+						"type": "Array<item>",
+						"isOptional": false,
+						"docs": "The endpoint returns an array of objects, each representing an item slot in the vault. If a slot is empty, it will return null. The amount of slots/bank tabs is implied by the length of the array.",
+						"subTypes": [
+							{
+								"name": "item",
+								"apiDataVariables": [
+									{
+										"name": "id",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The item id."
+									},
+									{
+										"name": "count",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The amount of items in the item stack."
+									},
+									{
+										"name": "charges",
+										"type": "number",
+										"isOptional": true,
+										"docs": "The amount of charges remaining on the item."
+									},
+									{
+										"name": "skin",
+										"type": "number",
+										"isOptional": true,
+										"docs": "The skin applied to the item, if it is different from its original. Can be resolved against /v2/skins."
+									},
+									{
+										"name": "upgrades",
+										"type": "Array<number>",
+										"isOptional": true,
+										"docs": "An array of item IDs for each rune or signet applied to the item."
+									},
+									{
+										"name": "infusions",
+										"type": "Array<number>",
+										"isOptional": true,
+										"docs": "An array of item IDs for each infusion applied to the item."
+									},
+									{
+										"name": "binding",
+										"type": "string",
+										"isOptional": true,
+										"docs": "The current binding of the item. Either Account or Character if present."
+									},
+									{
+										"name": "bound_to",
+										"type": "string",
+										"isOptional": true,
+										"docs": "If binding is Character, this field tells which character it is bound to."
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/dungeons/dungeons.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/dungeons/dungeons.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "dungeons",
+				"docs": "This resource returns the dungeons completed since daily dungeon reset.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "dungeons",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "The endpoint returns an array, each value being the ID of a dungeon path that can be resolved against /v2/dungeons. Note that this ID indicates a path and not the dungeon itself."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/dyes/dyes.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/dyes/dyes.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "dyes",
+				"docs": "This resource returns the unlocked dyes of the account.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "dyes",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "The endpoint returns an array, each value being the ID of a color resolved against /v2/colors."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/finishers/finishers.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/finishers/finishers.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "finishers",
+				"docs": "This resource returns information about finishers that are unlocked for an account.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "finishers",
+						"type": "Array<finisher>",
+						"isOptional": false,
+						"docs": "This request will return an array of objects with the following properties.",
+						"subTypes": [
+							{
+								"name": "finisher",
+								"apiDataVariables": [
+									{
+										"name": "id",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The id of the finisher resolvable against /v2/finishers."
+									},
+									{
+										"name": "permanent",
+										"type": "boolean",
+										"isOptional": false,
+										"docs": "Indicates if the finisher is permanent or temporary."
+									},
+									{
+										"name": "quantity",
+										"type": "number",
+										"isOptional": true,
+										"docs": "If permanent is false, this field will indicate the number of uses the finisher has remaining."
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/gliders/gliders.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/gliders/gliders.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "gliders",
+				"docs": "This resource returns the unlocked gliders of the account.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "gliders",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "The endpoint returns an array, each value being the ID resolveable against /v2/gliders."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/home/home.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/home/home.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "home",
+				"docs": "This resource is a dummy granting access to its children.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": true,
+				"childNodes": ["cats", "nodes"],
+				"isList": false,
+				"isElement": false,
+				"hasData": false
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/home/cats/cats.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/home/cats/cats.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "cats",
+				"docs": "This resource returns information about unlocked home instance cats.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "home",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "cats",
+						"type": "Array<cat>",
+						"isOptional": false,
+						"docs": "This request will return an array of objects with the following properties.",
+						"subTypes": [
+							{
+								"name": "cat",
+								"apiDataVariables": [
+									{
+										"name": "id",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The id for the cat that can be resolved against /v2/cats."
+									},
+									{
+										"name": "hint",
+										"type": "string",
+										"isOptional": true,
+										"docs": "A hint to identify what is needed for each cat."
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/home/nodes/nodes.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/home/nodes/nodes.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "nodes",
+				"docs": "This resource returns information about unlocked home instance nodes.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "home",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "nodes",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "This request will return an array of strings. Each string represents the id of a particular node that can be resolved against /v2/nodes."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/inventory/inventory.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/inventory/inventory.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "inventory",
+				"docs": "This resource returns the shared inventory slots in an account.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "items",
+						"type": "Array<item>",
+						"isOptional": false,
+						"docs": "The endpoint returns an array of objects, each representing an item slot in the shared inventory. If a slot is empty, it will return null. The amount of slots is implied by the length of the array.",
+						"subTypes": [
+							{
+								"name": "item",
+								"apiDataVariables": [
+									{
+										"name": "id",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The item id."
+									},
+									{
+										"name": "count",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The amount of items in the item stack."
+									},
+									{
+										"name": "charges",
+										"type": "number",
+										"isOptional": true,
+										"docs": "The amount of charges remaining on the item."
+									},
+									{
+										"name": "skin",
+										"type": "number",
+										"isOptional": true,
+										"docs": "The skin applied to the item, if it is different from its original. Can be resolved against /v2/skins."
+									},
+									{
+										"name": "upgrades",
+										"type": "Array<number>",
+										"isOptional": true,
+										"docs": "An array of item IDs for each rune or signet applied to the item."
+									},
+									{
+										"name": "infusions",
+										"type": "Array<number>",
+										"isOptional": true,
+										"docs": "An array of item IDs for each infusion applied to the item."
+									},
+									{
+										"name": "binding",
+										"type": "string",
+										"isOptional": true,
+										"docs": "The current binding of the item. If present, the only possible value is Account."
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/mailcarriers/mailcarriers.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/mailcarriers/mailcarriers.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "mailcarriers",
+				"docs": "This resource returns information about mail carriers that are unlocked for an account.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "mailcarriers",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This request will return an array of integer values that can be resolved against /v2/mailcarriers."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/masteries/masteries.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/masteries/masteries.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "masteries",
+				"docs": "This resource returns information about masteries that are unlocked for an account. A tallied up total of the account's mastery points can be found at /v2/account/mastery/points.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "masteries",
+						"type": "Array<mastery>",
+						"isOptional": false,
+						"docs": "This request will return an array of objects with the following properties.",
+						"subTypes": [
+							{
+								"name": "mastery",
+								"apiDataVariables": [
+									{
+										"name": "id",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The id of the mastery resolvable against /v2/masteries."
+									},
+									{
+										"name": "level",
+										"type": "number",
+										"isOptional": true,
+										"docs": "Indicates the level at which the mastery is on the account. Is a 0-indexed reference to the /v2/masteries.levels array indicating the maximum level unlocked by the user. If omitted, this mastery hasn't been started."
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/mastery/mastery.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/mastery/mastery.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "mastery",
+				"docs": "This resource is a dummy granting access to its children.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": true,
+				"childNodes": ["points"],
+				"isList": false,
+				"isElement": false,
+				"hasData": false
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/mastery/points/points.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/mastery/points/points.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "points",
+				"docs": "This resource returns information about the total amount of masteries that are unlocked for an account. A detailed mastery track completion break down is available at /v2/account/masteries.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "mastery",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "totals",
+						"type": "Array<total>",
+						"isOptional": false,
+						"docs": "This request will return an array of objects with the following properties.",
+						"subTypes": [
+							{
+								"name": "total",
+								"apiDataVariables": [
+									{
+										"name": "region",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The mastery region. Current possible options: Tyria, Maguuma, Desert."
+									},
+									{
+										"name": "spent",
+										"type": "number",
+										"isOptional": false,
+										"docs": "Amount of masteries of this region spent in mastery tracks."
+									},
+									{
+										"name": "earned",
+										"type": "number",
+										"isOptional": false,
+										"docs": "Amount of masteries of this region earned for the account."
+									}
+								]
+							}
+						]
+					},
+					{
+						"name": "unlocked",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "Array of mastery ids."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/materials/materials.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/materials/materials.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "materials",
+				"docs": "This resource returns the materials stored in a player's vault.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "items",
+						"type": "Array<item>",
+						"isOptional": false,
+						"docs": "The endpoint returns an array of objects, each representing a material that can be stored in the vault. Every material will be returned, even if they have a count of 0.",
+						"subTypes": [
+							{
+								"name": "item",
+								"apiDataVariables": [
+									{
+										"name": "id",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The item ID of the material."
+									},
+									{
+										"name": "category",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The material category the item belongs to. Can be resolved against /v2/materials."
+									},
+									{
+										"name": "binding",
+										"type": "string",
+										"isOptional": true,
+										"docs": "The binding of the material. Either Account or omitted."
+									},
+									{
+										"name": "count",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The number of the material that is stored in the account vault."
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/minis/minis.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/minis/minis.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "minis",
+				"docs": "This resource returns information about miniatures that are unlocked for an account.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "minis",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This request will return an array of IDs that can be resolved against /v2/minis."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/outfits/outfits.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/outfits/outfits.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "outfits",
+				"docs": "This resource returns information about outfits that are unlocked for an account.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "outfits",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This request will return an array of IDs that can be resolved against /v2/outfits."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/pvp/pvp.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/pvp/pvp.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "pvp",
+				"docs": "This resource is a dummy granting access to its children.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": true,
+				"childNodes": ["heroes"],
+				"isList": false,
+				"isElement": false,
+				"hasData": false
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/pvp/heroes/heroes.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/pvp/heroes/heroes.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "heroes",
+				"docs": "This resource returns information about pvp heroes that are unlocked for an account.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "pvp",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "heroes",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This request will return an array of IDs that can be resolved against /v2/pvp/heroes."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/raids/raids.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/raids/raids.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "raids",
+				"docs": "This resource returns the raids completed since weekly raid reset.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "raids",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "The endpoints returns an array, each value being the ID of a raid encounter that can be resolved against /v2/raids. Note that this ID indicates an encounter and not the raid wing itself."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/recipes/recipes.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/recipes/recipes.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "recipes",
+				"docs": "This resource returns information about recipes that are unlocked for an account.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "recipes",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This request will return an array of IDs that can be resolved against /v2/recipes."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/skins/skins.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/skins/skins.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "skins",
+				"docs": "This resource returns information about skins that are unlocked for an account.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "skins",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This request will return an array of IDs that can be resolved against /v2/skins."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/titles/titles.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/titles/titles.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "titles",
+				"docs": "This resource returns information about titles that are unlocked for an account.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "titles",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This request will return an array of IDs that can be resolved against /v2/titles."
+					}
+				]
+			}
+		},
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/account/currencies/currencies.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/account/currencies/currencies.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "currencies",
+				"docs": "This resource returns the currencies of the account.",
+				"isAuthenticated": true,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "account",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "currencies",
+						"type": "Array<currency>",
+						"isOptional": false,
+						"docs": "The endpoint returns an array of objects, each representing a currency.",
+						"subTypes": [
+							{
+								"name": "currency",
+								"apiDataVariables": [
+									{
+										"name": "id",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The currency's ID that can be resolved against /v2/currencies."
+									},
+									{
+										"name": "value",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The amount of this currency."
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		}
+	]
+}

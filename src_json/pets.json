@@ -1,0 +1,86 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/pets/pets.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/pets/pets.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "pets",
+				"docs": "This resource returns information about pets that are available in-game.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "pet",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of pet ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The id of the pet."
+					},
+					{
+						"name": "name",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The name of the pet as it appears in-game."
+					},
+					{
+						"name": "description",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The description of the pet as it appears in-game."
+					},
+					{
+						"name": "icon",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The icon url for the pet."
+					},
+					{
+						"name": "skills",
+						"type": "Array<skill>",
+						"isOptional": false,
+						"docs": "An array of skill ids the pet can use.",
+						"subTypes": [
+							{
+								"name": "skill",
+								"apiDataVariables": [
+									{
+										"name": "id",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The id of the skill, to be resolved against v2/skills."
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		}
+	]
+}

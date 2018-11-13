@@ -1,0 +1,39 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/build/build.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/build/build.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "build",
+				"docs": "This resource returns the current build id of the game. This can be used, for example, to register when event timers reset due to server restarts.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": false,
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The current build id of the game."
+					}
+				]
+			}
+		}
+	]
+}

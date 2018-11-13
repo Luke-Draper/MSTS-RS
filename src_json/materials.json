@@ -1,0 +1,67 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/materials/materials.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/materials/materials.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "materials",
+				"docs": "This resource returns information about the categories in material storage.",
+				"isAuthenticated": false,
+				"isLocalized": true,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "category",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of material category ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The id of the material category."
+					},
+					{
+						"name": "name",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The name of the material category as it appears in-game."
+					},
+					{
+						"name": "items",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "The ids of the items in this category."
+					},
+					{
+						"name": "order",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The order in which the category appears in the material storage."
+					}
+				]
+			}
+		}
+	]
+}

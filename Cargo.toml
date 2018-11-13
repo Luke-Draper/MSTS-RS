@@ -1,7 +1,10 @@
 [package]
-name = "MSTS_RS"
+name = "msts_rs"
 version = "0.1.0"
 authors = ["Luke-Draper <lukepdraper@gmail.com>"]
 edition = "2018"
 
 [dependencies]
+
+clap = "2.*"
+serde_json = "1.*"

@@ -1,0 +1,55 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/cats/cats.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/cats/cats.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "cats",
+				"docs": "This endpoints returns an array of ids. Specifying an id returns information about the selected cat.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "cat",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of cat ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The id for the cat."
+					},
+					{
+						"name": "hint",
+						"type": "string",
+						"isOptional": true,
+						"docs": "A hint to identify what is needed for each cat."
+					}
+				]
+			}
+		}
+	]
+}

@@ -1,0 +1,79 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/mailcarriers/mailcarriers.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/mailcarriers/mailcarriers.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "mailcarriers",
+				"docs": "This resource returns information about mailcarriers that are available in-game.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "mailcarrier",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of mailcarrier ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The id of the mailcarrier."
+					},
+					{
+						"name": "unlock_items",
+						"type": "Array<number>",
+						"isOptional": true,
+						"docs": "An array of item ids used to unlock the mailcarrier. Can be resolved against v2/items."
+					},
+					{
+						"name": "order",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The order in which the mailcarrier appears in a list."
+					},
+					{
+						"name": "icon",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The icon url for the mailcarrier."
+					},
+					{
+						"name": "name",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The name of the mailcarrier as it appears in-game."
+					},
+					{
+						"name": "flags",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "Additional flags on the item. currently either [] or ['Default']"
+					}
+				]
+			}
+		}
+	]
+}

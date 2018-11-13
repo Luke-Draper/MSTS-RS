@@ -1,0 +1,79 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/minis/minis.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/minis/minis.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "minis",
+				"docs": "This resource returns information about minis that are available in-game.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "mini",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of mini ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The id of the mini."
+					},
+					{
+						"name": "name",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The name of the mini as it appears in-game."
+					},
+					{
+						"name": "unlock",
+						"type": "string",
+						"isOptional": true,
+						"docs": "A description explaining how to acquire the mini."
+					},
+					{
+						"name": "icon",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The icon url for the mini."
+					},
+					{
+						"name": "order",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The order in which the mini appears in a list."
+					},
+					{
+						"name": "item_id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The item which unlocks the mini and can be resolved against /v2/items"
+					}
+				]
+			}
+		}
+	]
+}

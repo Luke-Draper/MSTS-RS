@@ -1,0 +1,579 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/items/items.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/items/items.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "items",
+				"docs": "This resource returns information about items that are available in-game.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": false,
+				"elementName": "item",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of item ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The id of the item."
+					},
+					{
+						"name": "chat_link",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The chat link."
+					},
+					{
+						"name": "name",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The name of the item."
+					},
+					{
+						"name": "icon",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The icon url for the item."
+					},
+					{
+						"name": "description",
+						"type": "string",
+						"isOptional": true,
+						"docs": "The item description."
+					},
+					{
+						"name": "type",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The item type. Possible values: :Armor – Armor :Back – Back item :Bag – Bags :Consumable – Consumables :Container – Containers :CraftingMaterial – Crafting materials :Gathering – Gathering tools :Gizmo – Gizmos :MiniPet – Miniatures :Tool – Salvage kits :Trait – Trait guides :Trinket – Trinkets :Trophy – Trophies :UpgradeComponent – Upgrade components :Weapon – Weapons"
+					},
+					{
+						"name": "rarity",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The item rarity. Possible values: Junk, Basic, Fine, Masterwork, Rare, Exotic, Ascended, Legendary"
+					},
+					{
+						"name": "level",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The required level."
+					},
+					{
+						"name": "vendor_value",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The value in coins when selling to a vendor. Can be non-zero even when the item has the NoSell flag."
+					},
+					{
+						"name": "default_skin",
+						"type": "number",
+						"isOptional": true,
+						"docs": "The default skin id."
+					},
+					{
+						"name": "flags",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "Flags applying to the item. Possible values :AccountBindOnUse – Account bound on use :AccountBound – Account bound on acquire :Attuned - If the item is Attuned :BulkConsume - If the item can be bulk consumed :DeleteWarning - If the item will prompt the player with a warning when deleting :HideSuffix – Hide the suffix of the upgrade component :Infused - If the item is infused :MonsterOnly :NoMysticForge – Not usable in the Mystic Forge :NoSalvage – Not salvageable :NoSell – Not sellable :NotUpgradeable – Not upgradeable :NoUnderwater – Not available underwater :SoulbindOnAcquire – Soulbound on acquire :SoulBindOnUse – Soulbound on use :Tonic - If the item is a tonic :Unique – Unique"
+					},
+					{
+						"name": "game_types",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "The game types in which the item is usable. At least one game type is specified. Possible values :Activity – Usable in activities :Dungeon – Usable in dungeons :Pve – Usable in general PvE :Pvp – Usable in PvP :PvpLobby – Usable in the Heart of the Mists :Wvw – Usable in World vs. World"
+					},
+					{
+						"name": "restrictions",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "Restrictions applied to the item. Possible values: Asura, Charr, Human, Norn, Sylvari, Elementalist, Engineer, Guardian, Mesmer, Necromancer, Ranger, Thief, Warrior"
+					},
+					{
+						"name": "details",
+						"type": "itemDetails",
+						"isOptional": true,
+						"docs": "Extra details dependant on item type. Crafting materials, trophies, and Traits don't have an additional details object.",
+						"subTypes": [
+							{
+								"name": "armorItemDetails",
+								"apiDataVariables": [
+									{
+										"name": "type",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The armor slot type. Possible values: Boots – Feet slot, Coat – Chest slot, Gloves – Hands slot, Helm – Helm slot, HelmAquatic – Breathing apparatus slot, Leggings – Legs slot, Shoulders – Shoulders slot"
+									},
+									{
+										"name": "weight_class",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The weight class of the armor piece. Possible values: Heavy – Heavy armor, Medium – Medium armor, Light – Light armor, Clothing – Town clothing"
+									},
+									{
+										"name": "defense",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The defense value of the armor piece."
+									},
+									{
+										"name": "infusion_slots",
+										"type": "Array<infusionSlotDetails>",
+										"isOptional": false,
+										"docs": "Infusion slots of the armor piece."
+									},
+									{
+										"name": "infix_upgrade",
+										"type": "infixUpgradeDetails",
+										"isOptional": true,
+										"docs": "The infix upgrade object."
+									},
+									{
+										"name": "suffix_item_id",
+										"type": "number",
+										"isOptional": true,
+										"docs": "The suffix item id. This is usually a rune."
+									},
+									{
+										"name": "secondary_suffix_item_id",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The secondary suffix item id. Equals '' if there is no secondary suffix item."
+									},
+									{
+										"name": "stat_choices",
+										"type": "Array<string>",
+										"isOptional": true,
+										"docs": "A list of selectable stat IDs which are visible in v2/itemstats"
+									}
+								]
+							},
+							{
+								"name": "backItemDetails",
+								"apiDataVariables": [
+									{
+										"name": "infusion_slots",
+										"type": "Array<infusionSlotDetails>",
+										"isOptional": false,
+										"docs": "Infusion slots of the back item."
+									},
+									{
+										"name": "infix_upgrade",
+										"type": "infixUpgradeDetails",
+										"isOptional": true,
+										"docs": "The infix upgrade object."
+									},
+									{
+										"name": "suffix_item_id",
+										"type": "number",
+										"isOptional": true,
+										"docs": "The suffix item id. This is usually a jewel."
+									},
+									{
+										"name": "secondary_suffix_item_id",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The secondary suffix item id. Equals '' if there is no secondary suffix item."
+									},
+									{
+										"name": "stat_choices",
+										"type": "Array<string>",
+										"isOptional": true,
+										"docs": "A list of selectable stat IDs which are visible in v2/itemstats"
+									}
+								]
+							},
+							{
+								"name": "bagItemDetails",
+								"apiDataVariables": [
+									{
+										"name": "size",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The number of bag slots."
+									},
+									{
+										"name": "no_sell_or_sort",
+										"type": "boolean",
+										"isOptional": false,
+										"docs": "Whether the bag is invisible/safe, and contained items won't show up at merchants etc."
+									}
+								]
+							},
+							{
+								"name": "consumableItemDetails",
+								"apiDataVariables": [
+									{
+										"name": "type",
+										"type": "string",
+										"isOptional": false,
+										"docs": "Consumable type. Possible values: AppearanceChange – For Total Makeover Kits, Self-Style Hair Kits, and Name Change Contracts, Booze – Alcohol consumables, ContractNpc – For Trading Post Express, Merchant Express, Golem Banker, Food – Food consumables, Generic – Various consumables, Halloween – Some boosters, Immediate – Consumables granting immediate effect (most boosters, Heavy Tome of Knowledge). Also used for currency items that are consumed immediately upon receipt., Transmutation – Skin consumables, Unlock – Unlock consumables, UpgradeRemoval – For Upgrade Extractor, Utility – Utility items (Potions etc.), TeleportToFriend used for Teleport to Friend"
+									},
+									{
+										"name": "description",
+										"type": "string",
+										"isOptional": true,
+										"docs": "Effect description for consumables applying an effect."
+									},
+									{
+										"name": "duration_ms",
+										"type": "number",
+										"isOptional": true,
+										"docs": "Effect duration in milliseconds."
+									},
+									{
+										"name": "unlock_type",
+										"type": "string",
+										"isOptional": true,
+										"docs": "Unlock type for unlock consumables. Possible values: BagSlot – For Bag Slot Expansion, BankTab – For Bank Tab Expansion, CollectibleCapacity – For Storage Expander, Content – Finishers and Collection unlocks, and Commander's Compendium, CraftingRecipe – Crafting recipes, Dye – Dyes, Outfit - For Outfits, GliderSkin For Gliders, Champion for Mist Champions, RandomUlock for items which unlock a random selection from a given set (see Guaranteed Wardrobe Unlock)."
+									},
+									{
+										"name": "color_id",
+										"type": "number",
+										"isOptional": true,
+										"docs": "The dye id for dye unlocks."
+									},
+									{
+										"name": "recipe_id",
+										"type": "number",
+										"isOptional": true,
+										"docs": "The recipe id for recipe unlocks."
+									},
+									{
+										"name": "apply_count",
+										"type": "number",
+										"isOptional": true,
+										"docs": "The number of stacks of the effect applied by this item."
+									},
+									{
+										"name": "name",
+										"type": "string",
+										"isOptional": true,
+										"docs": "The effect type name of the consumable."
+									},
+									{
+										"name": "skins",
+										"type": "Array<number>",
+										"isOptional": true,
+										"docs": "A list skin ids which this item unlocks; resovable against v2/skins."
+									}
+								]
+							},
+							{
+								"name": "containerItemDetails",
+								"apiDataVariables": [
+									{
+										"name": "type",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The container type. Possible values: Default, GiftBox – For some presents and most dye kits, OpenUI – For containers that have their own UI when opening (Black Lion Chest)"
+									}
+								]
+							},
+							{
+								"name": "gatheringItemDetails",
+								"apiDataVariables": [
+									{
+										"name": "type",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The tool type. Possible values: Foraging – For harvesting sickles, Logging – For logging axes, Mining – For mining picks"
+									}
+								]
+							},
+							{
+								"name": "gizmoItemDetails",
+								"apiDataVariables": [
+									{
+										"name": "type",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The gizmo type. Possible values: Default, ContainerKey – For Black Lion Chest Keys., RentableContractNpc – For time-limited NPC services (e.g. Golem Banker, Personal Merchant Express), UnlimitedConsumable – For Permanent Self-Style Hair Kit"
+									}
+								]
+							},
+							{
+								"name": "miniItemDetails",
+								"apiDataVariables": [
+									{
+										"name": "minipet_id",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The miniature it unlocks. Can be resolved against /v2/minis"
+									}
+								]
+							},
+							{
+								"name": "salvageKitItemDetails",
+								"apiDataVariables": [
+									{
+										"name": "type",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The tool type. Always Salvage"
+									},
+									{
+										"name": "charges",
+										"type": "number",
+										"isOptional": false,
+										"docs": "Number of charges."
+									}
+								]
+							},
+							{
+								"name": "trinketItemDetails",
+								"apiDataVariables": [
+									{
+										"name": "type",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The trinket type. Possible values: Accessory – Accessory, Amulet – Amulet, Ring – Ring"
+									},
+									{
+										"name": "infusion_slots",
+										"type": "Array<infusionSlotDetails>",
+										"isOptional": false,
+										"docs": "Infusion slots of the trinket."
+									},
+									{
+										"name": "infix_upgrade",
+										"type": "infixUpgradeDetails",
+										"isOptional": true,
+										"docs": "The infix upgrade object."
+									},
+									{
+										"name": "suffix_item_id",
+										"type": "number",
+										"isOptional": true,
+										"docs": "The suffix item id. This is usually a jewel or gem."
+									},
+									{
+										"name": "secondary_suffix_item_id",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The secondary suffix item id. Equals '' if there is no secondary suffix item."
+									},
+									{
+										"name": "stat_choices",
+										"type": "Array<string>",
+										"isOptional": true,
+										"docs": "A list of selectable stat IDs which are visible in v2/itemstats"
+									}
+								]
+							},
+							{
+								"name": "upgradeComponentItemDetails",
+								"apiDataVariables": [
+									{
+										"name": "type",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The type of the upgrade component. Possible values: Default – Infusions and Jewels (and historical PvP runes/sigils), Gem – Universal upgrades (Gemstones, Doubloons, and Marks/Crests/etc.), Rune – Rune, Sigil – Sigil"
+									},
+									{
+										"name": "flags",
+										"type": "Array<string>",
+										"isOptional": false,
+										"docs": "The items that can be upgraded with the upgrade component. Possible values: Weapons: Axe, Dagger, Focus,Greatsword, Hammer, Harpoon, LongBow, Mace, Pistol, Rifle, Scepter, Shield, ShortBow, Speargun, Staff, Sword, Torch, Trident, Warhorn, Armor: HeavyArmor, MediumArmor, LightArmor, Trinkets: Trinket"
+									},
+									{
+										"name": "infusion_upgrade_flags",
+										"type": "Array<string>",
+										"isOptional": false,
+										"docs": "Applicable infusion slot for infusion upgrades. Possible values: Defense – Defensive infusion, Offense – Offensive infusion, Utility – Utility infusion, Agony - Agony infusion"
+									},
+									{
+										"name": "suffix",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The suffix appended to the item name when the component is applied."
+									},
+									{
+										"name": "infix_upgrade",
+										"type": "infixUpgradeDetails",
+										"isOptional": true,
+										"docs": "The infix upgrade object."
+									},
+									{
+										"name": "bonuses",
+										"type": "Array<string>",
+										"isOptional": false,
+										"docs": "The bonuses from runes. Note: For runes, the effect is specified in the bonuses property. In that case, the infix_upgrade does not contain a buff property. All other upgrade components don't list a bonuses property but specify all their effects in the buff subproperty."
+									}
+								]
+							},
+							{
+								"name": "weaponItemDetails",
+								"apiDataVariables": [
+									{
+										"name": "type",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The weapon type. One-handed main hand: Axe, Dagger, Mace, Pistol, Scepter, Sword, One-handed off hand: Focus, Shield, Torch, Warhorn, Two-handed: Greatsword, Hammer, LongBow, Rifle, ShortBow, Staff, Aquatic: Harpoon, Speargun, Trident, Other: LargeBundle, SmallBundle, Toy, TwoHandedToy"
+									},
+									{
+										"name": "damage_type",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The damage type. Fire – Fire damage, Ice – Ice damage, Lightning – Lighting damage, Physical – Physical damage., Choking – (not used)"
+									},
+									{
+										"name": "min_power",
+										"type": "number",
+										"isOptional": false,
+										"docs": "Minimum weapon strength."
+									},
+									{
+										"name": "max_power",
+										"type": "number",
+										"isOptional": false,
+										"docs": " Maximum weapon strength."
+									},
+									{
+										"name": "defense",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The defense value of the weapon (for shields)."
+									},
+									{
+										"name": "infusion_slots",
+										"type": "Array<infusionSlotDetails>",
+										"isOptional": false,
+										"docs": "Infusion slots of the weapon."
+									},
+									{
+										"name": "infix_upgrade",
+										"type": "infixUpgradeDetails",
+										"isOptional": true,
+										"docs": "The infix upgrade object."
+									},
+									{
+										"name": "suffix_item_id",
+										"type": "number",
+										"isOptional": true,
+										"docs": "The suffix item id. This is usually a sigil."
+									},
+									{
+										"name": "secondary_suffix_item_id",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The secondary suffix item id. Equals '' if there is no secondary suffix item."
+									},
+									{
+										"name": "stat_choices",
+										"type": "Array<string>",
+										"isOptional": true,
+										"docs": "A list of selectable stat IDs which are visible in v2/itemstats"
+									}
+								]
+							},
+							{
+								"name": "infixUpgradeDetails",
+								"apiDataVariables": [
+									{
+										"name": "id",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The itemstat id that can be resolved against /v2/itemstats."
+									},
+									{
+										"name": "attributes",
+										"type": "Array<attribute>",
+										"isOptional": false,
+										"docs": "List of attribute bonuses.",
+										"subTypes": [
+											{
+												"name": "attribute",
+												"apiDataVariables": [
+													{
+														"name": "attribute",
+														"type": "string",
+														"isOptional": false,
+														"docs": "Attribute this bonus applies to. Possible values: BoonDuration - Concentration, ConditionDamage – Condition Damage, ConditionDuration - Expertise, CritDamage – Ferocity, Healing – Healing Power, Power – Power, Precision – Precision, Toughness – Toughness, Vitality – Vitality"
+													},
+													{
+														"name": "modifier",
+														"type": "number",
+														"isOptional": false,
+														"docs": "The modifier value."
+													}
+												]
+											}
+										]
+									},
+									{
+										"name": "buff",
+										"type": "buff",
+										"isOptional": true,
+										"docs": "Object containing an additional effect. This is used for Boon Duration, Condition Duration, or additional attribute bonuses for ascended trinkets or back items.",
+										"subTypes": [
+											{
+												"name": "buff",
+												"apiDataVariables": [
+													{
+														"name": "skill_id",
+														"type": "number",
+														"isOptional": false,
+														"docs": "The skill id of the effect."
+													},
+													{
+														"name": "description",
+														"type": "string",
+														"isOptional": false,
+														"docs": "The effect's description."
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"name": "infusionSlotDetails",
+								"apiDataVariables": [
+									{
+										"name": "flags",
+										"type": "Array<string>",
+										"isOptional": false,
+										"docs": "Infusion slot type of infusion upgrades. The array contains a maximum of one value. Possible values: Enrichment – Item has an enrichment slot., Infusion – Item has an infusion slot."
+									},
+									{
+										"name": "item_id",
+										"type": "number",
+										"isOptional": true,
+										"docs": "The infusion upgrade already in the armor piece."
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		}
+	]
+}

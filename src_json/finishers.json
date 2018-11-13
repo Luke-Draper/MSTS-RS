@@ -1,0 +1,79 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/finishers/finishers.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/finishers/finishers.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "finishers",
+				"docs": "This resource returns information about finishers that are available in-game.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "finisher",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of finisher ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The id of the finisher."
+					},
+					{
+						"name": "unlock_details",
+						"type": "string",
+						"isOptional": false,
+						"docs": "A description explaining how to acquire the finisher."
+					},
+					{
+						"name": "unlock_items",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "An array of item ids used to unlock the finisher. Can be resolved against v2/items."
+					},
+					{
+						"name": "order",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The order in which the finisher appears in a list."
+					},
+					{
+						"name": "icon",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The icon url for the finisher."
+					},
+					{
+						"name": "name",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The name of the finisher as it appears in-game."
+					}
+				]
+			}
+		}
+	]
+}

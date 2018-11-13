@@ -1,0 +1,134 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/colors/colors.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/colors/colors.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "colors",
+				"docs": "This endpoints returns an array of ids. Specifying an id returns information about the selected color.",
+				"isAuthenticolored": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "color",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of color ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The color id."
+					},
+					{
+						"name": "name",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The color name."
+					},
+					{
+						"name": "base_rgb",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "The base rgb values."
+					},
+					{
+						"name": "item",
+						"type": "number",
+						"isOptional": false,
+						"docs": "ID of the dye item."
+					},
+					{
+						"name": "categories",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "Color categories. Possible values:Hue: Gray, Brown, Red, Orange, Yellow, Green, Blue, Purple:Material: Vibrant, Leather, Metal:Rarity: Starter, Common, Uncommon, Rare"
+					},
+					{
+						"name": "cloth",
+						"type": "material",
+						"isOptional": false,
+						"docs": "Detailed information on its appearance when applied on cloth armor."
+					},
+					{
+						"name": "leather",
+						"type": "material",
+						"isOptional": false,
+						"docs": "Detailed information on its appearance when applied on leather armor."
+					},
+					{
+						"name": "metal",
+						"type": "material",
+						"isOptional": false,
+						"docs": "Detailed information on its appearance when applied on metal armor.",
+						"subTypes": [
+							{
+								"name": "material",
+								"apiDataVariables": [
+									{
+										"name": "brightness",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The brightness."
+									},
+									{
+										"name": "contrast",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The contrast."
+									},
+									{
+										"name": "hue",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The hue in the HSL colorspace."
+									},
+									{
+										"name": "saturation",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The saturation in the HSL colorspace."
+									},
+									{
+										"name": "lightness",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The lightness in the HSL colorspace."
+									},
+									{
+										"name": "rgb",
+										"type": "Array<number>",
+										"isOptional": false,
+										"docs": "A list containing precalculated RGB values."
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		}
+	]
+}

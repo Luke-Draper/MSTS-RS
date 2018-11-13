@@ -1,0 +1,55 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/files/files.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/files/files.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "files",
+				"docs": "This resource returns commonly requested in-game assets that may be used to enhance API-derived applications.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "file",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of cat ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The file ID"
+					},
+					{
+						"name": "icon",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The URL to the image."
+					}
+				]
+			}
+		}
+	]
+}

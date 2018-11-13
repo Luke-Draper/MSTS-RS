@@ -1,0 +1,74 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/dungeons/dungeons.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/dungeons/dungeons.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "dungeons",
+				"docs": "This resource returns details about each dungeon and it's associated paths.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "dungeon",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of dungeon ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The id for the dungeon."
+					},
+					{
+						"name": "paths",
+						"type": "Array<path>",
+						"isOptional": false,
+						"docs": "",
+						"subTypes": [
+							{
+								"name": "path",
+								"apiDataVariables": [
+									{
+										"name": "id",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The given name for the dungeon path."
+									},
+									{
+										"name": "type",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The type of the chosen path. Can be either Story or Explorable"
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		}
+	]
+}

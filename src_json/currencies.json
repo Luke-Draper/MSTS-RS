@@ -1,0 +1,73 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/currencies/currencies.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/currencies/currencies.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "currencies",
+				"docs": "This resource returns a list of the currencies that can be contained in the account wallet.",
+				"isAuthenticated": false,
+				"isLocalized": true,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "currency",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of currency ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The id for the currency."
+					},
+					{
+						"name": "name",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The currency's name."
+					},
+					{
+						"name": "description",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The currency's description."
+					},
+					{
+						"name": "icon",
+						"type": "string",
+						"isOptional": false,
+						"docs": "A URL to an icon for the currency."
+					},
+					{
+						"name": "order",
+						"type": "number",
+						"isOptional": false,
+						"docs": "A number that can be used to sort the list of currencies when ordered from least to greatest."
+					}
+				]
+			}
+		}
+	]
+}

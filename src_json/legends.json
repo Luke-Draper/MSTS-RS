@@ -1,0 +1,73 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/legends/legends.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/legends/legends.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "legends",
+				"docs": "This resource returns information about legends that are available in-game.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "legend",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of legend ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The id of the legend."
+					},
+					{
+						"name": "swap",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The id of the profession (swap Legend) skill resolvable against v2/skills."
+					},
+					{
+						"name": "heal",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The id of the heal skill resolvable against v2/skills."
+					},
+					{
+						"name": "elite",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The id of the elite skill resolvable against v2/skills."
+					},
+					{
+						"name": "utilities",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "List of ids of the utility skills resolvable against v2/skills."
+					}
+				]
+			}
+		}
+	]
+}

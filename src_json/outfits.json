@@ -1,0 +1,67 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/outfits/outfits.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/outfits/outfits.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "outfits",
+				"docs": "This resource returns information about outfits that are available in-game.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "outfit",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of outfit ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The id of the outfit."
+					},
+					{
+						"name": "name",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The name of the outfit as it appears in-game."
+					},
+					{
+						"name": "icon",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The icon url for the outfit."
+					},
+					{
+						"name": "unlock_items",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "An array of item ids used to unlock the outfit. Can be resolved against v2/items."
+					}
+				]
+			}
+		}
+	]
+}

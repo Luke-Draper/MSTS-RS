@@ -1,0 +1,86 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/itemstats/itemstats.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/itemstats/itemstats.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "itemstats",
+				"docs": "This resource returns information about itemstats that are available in-game.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "itemstat",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<number>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of itemstat ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "number",
+						"isOptional": false,
+						"docs": "The id of the itemstat."
+					},
+					{
+						"name": "name",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The name of the itemstat as it appears in-game."
+					},
+					{
+						"name": "attributes",
+						"type": "Array<attribute>",
+						"isOptional": false,
+						"docs": "List of attribute bonuses.",
+						"subTypes": [
+							{
+								"name": "attribute",
+								"apiDataVariables": [
+									{
+										"name": "attribute",
+										"type": "string",
+										"isOptional": false,
+										"docs": "The name of the attribute, may be one of the following: AgonyResistance - Agony Resistance, BoonDuration - Concentration, ConditionDamage – Condition Damage, ConditionDuration - Expertise, CritDamage – Ferocity, Healing – Healing Power, Power – Power, Precision – Precision, Toughness – Toughness, Vitality – Vitality"
+									},
+									{
+										"name": "multiplier",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The multiplier number for that attribute."
+									},
+									{
+										"name": "value",
+										"type": "number",
+										"isOptional": false,
+										"docs": "The value number for that attribute."
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		}
+	]
+}

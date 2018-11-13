@@ -1,0 +1,49 @@
+{
+	"templateDirectory": "./templates",
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["nodeBase"],
+					"destination": "./root/nodes/nodes.ts"
+				},
+				{
+					"templates": ["nodeTest"],
+					"destination": "./root/nodes/nodes.test.ts"
+				}
+			],
+			"variables": {
+				"apiNodeName": "nodes",
+				"docs": "This resource returns information about nodes that are available in-game.",
+				"isAuthenticated": false,
+				"isLocalized": false,
+				"isDisabled": false,
+				"isVariablePath": false,
+				"isChild": true,
+				"parentNode": "root",
+				"isParent": false,
+				"isList": true,
+				"getAllAvailable": true,
+				"elementName": "node",
+				"isElement": false,
+				"hasData": true,
+				"apiDataVariables": [
+					{
+						"name": "ids",
+						"type": "Array<string>",
+						"isOptional": false,
+						"docs": "This endpoints returns an array of node ids."
+					}
+				],
+				"apiElementVariables": [
+					{
+						"name": "id",
+						"type": "string",
+						"isOptional": false,
+						"docs": "The id of the node."
+					}
+				]
+			}
+		}
+	]
+}
