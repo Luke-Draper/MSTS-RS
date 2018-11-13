@@ -1,0 +1,7 @@
+[package]
+name = "MSTS_RS"
+version = "0.1.0"
+authors = ["Luke-Draper <lukepdraper@gmail.com>"]
+edition = "2018"
+
+[dependencies]
