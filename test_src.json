@@ -1,0 +1,21 @@
+{
+	"tasks": [
+		{
+			"targets": [
+				{
+					"templates": ["test1"],
+					"destination": "./msts/test1.txt"
+				}
+			],
+			"variables": {
+				"name": "Luke",
+				"description": "A programmer of many things...",
+				"likes": [
+					{ "title": "1", "description": "number 1" },
+					{ "title": "2", "description": "number 2" },
+					{ "title": "3", "description": "number 3" }
+				]
+			}
+		}
+	]
+}

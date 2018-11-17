@@ -1,5 +1,16 @@
+#[macro_use]
+extern crate serde_derive;
+#[macro_use]
+extern crate derive_builder;
 extern crate clap;
-use clap::{App, Arg, ArgMatches};
+extern crate serde;
+
+mod file_io;
+mod json_parser;
+mod tasks;
+mod template_parser;
+
+use clap::{App, Arg};
 use std::fs::{read_dir, File};
 
 fn main() {
@@ -25,15 +36,12 @@ fn main() {
 		)
 		.get_matches();
 
-	validate_cli(matches);
+	let json_path: &str;
+	let tmpl_path: &str;
 
-	println!("Yay");
-}
-
-fn validate_cli(matches: ArgMatches) {
 	if let Some(j) = matches.value_of("in_json") {
 		let f = File::open(j);
-
+		json_path = j;
 		match f {
 			Ok(file) => file,
 			Err(error) => panic!(
@@ -48,7 +56,7 @@ fn validate_cli(matches: ArgMatches) {
 
 	if let Some(t) = matches.value_of("template_folder") {
 		let d = read_dir(t);
-
+		tmpl_path = t;
 		match d {
 			Ok(directory) => directory,
 			Err(error) => panic!(
@@ -60,4 +68,24 @@ fn validate_cli(matches: ArgMatches) {
 		panic!("Command line argument -t='template_folder_path' required. Run again with --help for more information");
 	}
 	println!("Relative filepath to the folder containing the template files");
+
+	let test1 = json_parser::get_source_json(json_path);
+
+	// let test2 = template_parser::get_template_map(tmpl_path);
+
+	println!("Output test: {}", "Hi!");
+	println!("Output: {}", test1.tasks[0].targets[0].templates[0]);
+	println!(
+		"Output: {}",
+		test1.tasks[0].variables["name"].as_str().unwrap()
+	);
+	// println!("Output: {:?}", test2);
+
+	// let input = test2.get("test1").unwrap().to_owned();
+
+	// println!("Output: {}", input);
+	// let test3 = template_parser::prep_template_for_task_parser(input);
+	// println!("Output: {}", test3);
+
+	println!("Yay");
 }
